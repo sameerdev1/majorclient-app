@@ -180,6 +180,24 @@ fun PremiumCard(
     }
 }
 
+/**
+ * Discreet developer credit line shown at the bottom of a screen — reads as
+ * a product credit, not a banner/ad. Low-emphasis color, small text, center
+ * aligned, with enough bottom padding to clear the system navigation bar.
+ */
+@Composable
+fun DeveloperWatermark(modifier: Modifier = Modifier) {
+    Text(
+        "MajorGym • Developed by M.A. Sameer",
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 6.dp, bottom = 10.dp),
+        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+        color = ClientColors.Hint.copy(alpha = 0.7f),
+        fontSize = 11.sp,
+    )
+}
+
 /** Small rounded status/badge pill, e.g. ACTIVE / EXPIRED / Present / Absent. */
 @Composable
 fun StatusPill(text: String, color: Color, modifier: Modifier = Modifier) {

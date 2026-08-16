@@ -6,4 +6,5 @@ package com.majorgym.client
 sealed class Screen {
     data object Home : Screen()
     data object Attendance : Screen()
+    data object About : Screen()
 }

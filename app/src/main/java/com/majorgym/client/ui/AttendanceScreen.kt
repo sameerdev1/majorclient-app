@@ -161,6 +161,7 @@ fun AttendanceScreen(onBack: () -> Unit) {
                             }
                         }
                     }
+                    DeveloperWatermark()
                 }
             }
         }

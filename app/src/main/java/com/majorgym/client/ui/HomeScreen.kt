@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Autorenew
 import androidx.compose.material.icons.rounded.CardMembership
+import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.EventAvailable
 import androidx.compose.material.icons.rounded.EventBusy
 import androidx.compose.material.icons.rounded.FactCheck
@@ -23,6 +24,7 @@ import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material.icons.rounded.QrCodeScanner
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -64,6 +66,7 @@ private val DATE_FORMAT: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM
 @Composable
 fun HomeScreen(
     onOpenAttendance: () -> Unit,
+    onOpenAbout: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val store = remember { LocalStore.getInstance(context) }
@@ -110,6 +113,15 @@ fun HomeScreen(
                     containerColor = ClientColors.Background,
                     titleContentColor = ClientColors.OnSurface,
                 ),
+                actions = {
+                    IconButton(onClick = onOpenAbout) {
+                        Icon(
+                            Icons.Rounded.Code,
+                            contentDescription = "Developer",
+                            tint = ClientColors.LightBlue,
+                        )
+                    }
+                },
             )
         },
     ) { padding ->
@@ -159,6 +171,8 @@ fun HomeScreen(
                         onClick = { showScanDialog = true },
                         modifier = Modifier.fillMaxWidth(),
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
+                    DeveloperWatermark()
                 }
             }
         }

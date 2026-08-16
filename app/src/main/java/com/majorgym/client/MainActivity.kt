@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.majorgym.client.ui.AboutScreen
 import com.majorgym.client.ui.AttendanceScreen
 import com.majorgym.client.ui.ClientColors
 import com.majorgym.client.ui.HomeScreen
@@ -73,9 +74,14 @@ class MainActivity : ComponentActivity() {
                                 when (target) {
                                     Screen.Home -> HomeScreen(
                                         onOpenAttendance = { screen = Screen.Attendance },
+                                        onOpenAbout = { screen = Screen.About },
                                     )
 
                                     Screen.Attendance -> AttendanceScreen(
+                                        onBack = { screen = Screen.Home },
+                                    )
+
+                                    Screen.About -> AboutScreen(
                                         onBack = { screen = Screen.Home },
                                     )
                                 }
