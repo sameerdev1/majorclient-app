@@ -1,10 +1,13 @@
 package com.majorgym.client.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +19,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Autorenew
 import androidx.compose.material.icons.rounded.CardMembership
-import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.EventAvailable
 import androidx.compose.material.icons.rounded.EventBusy
 import androidx.compose.material.icons.rounded.FactCheck
@@ -24,7 +26,6 @@ import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material.icons.rounded.QrCodeScanner
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -43,10 +44,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.majorgym.client.R
 import com.majorgym.client.data.LocalStore
 import com.majorgym.client.data.Member
 import kotlinx.coroutines.delay
@@ -114,11 +117,29 @@ fun HomeScreen(
                     titleContentColor = ClientColors.OnSurface,
                 ),
                 actions = {
-                    IconButton(onClick = onOpenAbout) {
-                        Icon(
-                            Icons.Rounded.Code,
-                            contentDescription = "Developer",
-                            tint = ClientColors.LightBlue,
+                    Column(
+                        modifier = Modifier
+                            .defaultMinSize(minWidth = 48.dp, minHeight = 48.dp)
+                            .clickable(onClick = onOpenAbout)
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.ic_about_info),
+                            contentDescription = "About / Developer",
+                            modifier = Modifier.size(22.dp),
+                        )
+                        Text(
+                            "About",
+                            fontSize = 10.sp,
+                            lineHeight = 11.sp,
+                            color = ClientColors.LightBlue,
+                        )
+                        Text(
+                            "Developer",
+                            fontSize = 10.sp,
+                            lineHeight = 11.sp,
+                            color = ClientColors.LightBlue,
                         )
                     }
                 },
